@@ -230,7 +230,7 @@
       <mat-card>
         <mat-card-content>
             <form #loginForm="ngForm" (submit)="login()">
-                <h4 class="card-title">Acceso</h4>
+                <h3 class="card-title">Acceso</h3>
                 <mat-error *ngIf="error">
                     El email o contraseña no son correctos!
                 </mat-error>
@@ -240,8 +240,8 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Contraseña</mat-label>
-                    <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password" name="password"
-                        required>
+                    <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password" 
+                    name="password" required>
                 </mat-form-field>
                 <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid" 
                   (click)="login()">Login</button>

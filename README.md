@@ -63,3 +63,59 @@ Angular Material es una biblioteca de componentes de UI que sigue las directrice
 Al finalizar, el proyecto estará listo para usar los componentes de Angular Material. El archivo `angular.json` se actualizará con las configuraciones del tema seleccionado, y el archivo `app.module.ts` tendrá las importaciones necesarias para empezar a utilizar los componentes de Material.
 
 ![paso2](imagenes/2.jpg)
+
+### Paso 3: Generar componente de Dashboard
+
+Este será el componente al que el usuario accederá si el login fue existoso
+
+![paso3](imagenes/3.jpg)
+
+### Paso 4: Generar el servicio de usuarios
+
+![paso4](imagenes/4.jpg)
+
+### Paso 5: Proporcionar el el cliente HTTP a la aplicación
+
+![paso5](imagenes/5.jpg)
+
+### Paso 6: Definir la ruta del dashboard
+
+Este será el componente al que el usuario accederá si el login fue existoso
+
+![paso6](imagenes/6.jpg)
+
+### Paso 7: Configurar el servicio de usuarios
+
+Para ello se define la lógica de login accediendo a la API de terceros de la escuela y verificando si el email y el password se encuentran en el array devuelto.
+
+![paso7](imagenes/7.jpg)
+
+### Paso 8: Crear NTML para el formulario de login
+
+![paso8](imagenes/8.jpg)
+
+### Paso 9: Dar estilos CSS al formulario de login
+
+![paso9](imagenes/9.jpg)
+
+### Paso 10: Crear el HTML del dashboard
+
+Este será el componente que verá después de un login exitoso, solo contiene un título de bienvenida
+
+![paso10](imagenes/10.jpg)
+
+### Pruebas
+
+Ejecutamos el proyecto con el comando `ng serve` y lo abrimos en el navegador
+
+### Login incorrecto
+
+Se muestra mensaje de error
+
+![p1](imagenes/p1.jpg)
+
+### Login correcto
+
+Se redirecciona a /dashboard
+
+![p1](imagenes/p2.jpg)

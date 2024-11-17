@@ -14,11 +14,9 @@ interface Usuario {
   providedIn: 'root'
 })
 export class AuthService {
-  readonly USERS_ENDPOINT = "https://api.escuelajs.co/api/v1/users"
+  readonly USERS_ENDPOINT = "https://api.escuelajs.co/api/v1/users";
   success = false;
-
   constructor(private httpClient: HttpClient) { }
-
   login(email: string, password: string): Observable<boolean> {
     return new Observable<boolean>((observer) => {
       this.httpClient.get(this.USERS_ENDPOINT).subscribe((users: any) => {
@@ -26,9 +24,7 @@ export class AuthService {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
           observer.next(true); 
-        } else {
-          observer.next(false);
-        }
+        } else observer.next(false);
         observer.complete();
       });
     });
