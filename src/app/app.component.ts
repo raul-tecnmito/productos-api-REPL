@@ -33,5 +33,5 @@ export class AppComponent {
       this.error = true;
     }
   }
-  isIndex() { return this.router.url === "/" }
+  get isIndex() {return this.router.url == '/'}
 }
