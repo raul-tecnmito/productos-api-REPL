@@ -15,7 +15,7 @@ interface Usuario {
 })
 export class AuthService {
   readonly USERS_ENDPOINT = "https://api.escuelajs.co/api/v1/users";
-  success = false;
+  
   constructor(private httpClient: HttpClient) { }
   login(email: string, password: string): Observable<boolean> {
     return new Observable<boolean>((observer) => {

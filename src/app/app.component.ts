@@ -26,7 +26,6 @@ export class AppComponent {
   async login() {
     try {
       const success = await firstValueFrom(this.authService.login(this.email, this.password));
-      console.log(success);
       if (!success) this.error = true;
       else this.router.navigate(['/dashboard']);
     } catch (err) {
