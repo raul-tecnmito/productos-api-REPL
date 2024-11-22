@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
 
-interface Product {
+export interface Product {
   id: number;
   title: string;
   price: number;
@@ -21,9 +20,11 @@ interface Product {
 })
 export class ProductService {
   private storageKey: string = 'products'; 
-  private baseUrl: string = 'https://fakestoreapi.com/products/'; 
+  private baseUrl: string = 'https://fakestoreapi.com/products'; 
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    
+  }
   
   private getProductsFromLocalStorage(): Product[] {
     const products = localStorage.getItem(this.storageKey);
@@ -35,17 +36,23 @@ export class ProductService {
   }
   
   private fetchAndStoreProductsFromAPI(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(`${this.baseUrl}products`).pipe(
-      map((products) => {
-        
-        this.saveProductsToLocalStorage(products);
-        return products;
-      }),
-      catchError(() => {
-        return [];
-      })
-    );
-  }
+    return new Observable((observer) => {
+      this.httpClient.get<Product[]>(this.baseUrl).subscribe({
+        next: (products) => {
+          console.log("PRODUCTO", products);
+          
+          this.saveProductsToLocalStorage(products);
+          observer.next(products);
+          observer.complete();
+        },
+        error: (error) => {
+          console.error('Error fetching products from API', error);
+          observer.next([]); // Retornar un array vacío en caso de error
+          observer.complete();
+        },
+      });
+    });
+  }  
   
   initializeProductsData(): Observable<Product[]> {
     

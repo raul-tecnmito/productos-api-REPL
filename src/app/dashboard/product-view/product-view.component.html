@@ -1,0 +1,11 @@
+<div class="product-view-dialog">
+  <button mat-icon-button class="close-button" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <h2>{{ data.title }}</h2>
+  <img [src]="data.image" [alt]="data.title" class="product-image" />
+  <p><strong>Precio:</strong> {{ data.price | currency }}</p>
+  <p><strong>Descripción:</strong> {{ data.description }}</p>
+  <p><strong>Categoría:</strong> {{ data.category }}</p>
+  <p><strong>Calificación:</strong> {{ data.rating.rate }} ({{ data.rating.count }} reseñas)</p>
+</div>

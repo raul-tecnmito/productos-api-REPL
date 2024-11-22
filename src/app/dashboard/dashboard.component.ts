@@ -1,40 +1,62 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatDialog } from '@angular/material/dialog';
-import { ProductService } from '../services/products.service';
-import { ProductFormComponent } from './product-form/product-form.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
+import { ProductFormComponent } from './product-form.component';
+import { Product, ProductService } from '../services/products.service';
+import { ProductViewComponent } from './product-view/product-view.component';
 
 @Component({
   selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+  ],
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  readonly dialog = inject(MatDialog);
   displayedColumns: string[] = ['id', 'title', 'price', 'actions'];
-  dataSource = new MatTableDataSource([]);
-  
+  dataSource = new MatTableDataSource([] as Product[]);
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private productService: ProductService, private dialog: MatDialog) {}
+  constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
+    console.log("cargando productos");
+    
     this.loadProducts();
   }
 
   loadProducts(): void {
-    this.dataSource.data = this.productService.getProductList();
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.productService.initializeProductsData().subscribe((products) => {
+      this.dataSource.data = products;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
 
-  openModal(product: any = null): void {
+  openModal(product: Product | null = null): void {
     const dialogRef = this.dialog.open(ProductFormComponent, {
       width: '400px',
       data: product,
-    });
+    }); 
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
@@ -47,6 +69,13 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+
+  viewProduct(product: any): void {
+    this.dialog.open(ProductViewComponent, {
+      width: '400px',
+      data: product,
+    });
+  }  
 
   deleteProduct(id: number): void {
     this.productService.deleteProduct(id);
