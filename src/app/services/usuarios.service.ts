@@ -7,6 +7,7 @@ interface Usuario {
   email: string;
   name: string;
   role: string;
+  avatar: string;
   password: string;
 }
 
@@ -20,9 +21,12 @@ export class AuthService {
   login(email: string, password: string): Observable<boolean> {
     return new Observable<boolean>((observer) => {
       this.httpClient.get(this.USERS_ENDPOINT).subscribe((users: any) => {
-        const user = users.find((user: Usuario) => user.email === email && user.password === password);
+        const user: Usuario = users.find((user: Usuario) => user.email === email && user.password === password);
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('auth.isAuthenticated', 'true');
+          localStorage.setItem('auth.user.name', user.name);
+          localStorage.setItem('auth.user.avatar', user.avatar);
+          
           observer.next(true); 
         } else observer.next(false);
         observer.complete();

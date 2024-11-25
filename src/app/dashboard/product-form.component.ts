@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { Product } from '../services/products.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-product-form',
@@ -17,9 +18,10 @@ import { Product } from '../services/products.service';
     MatButtonModule,
     MatSelectModule,
     ReactiveFormsModule,
+    MatIconModule
   ],
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.scss'],
+  styleUrls: ['./product-form.component.css'],
 })
 export class ProductFormComponent {
   productForm: FormGroup;

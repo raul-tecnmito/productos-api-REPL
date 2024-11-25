@@ -23,7 +23,6 @@ export class ProductService {
   private baseUrl: string = 'https://fakestoreapi.com/products'; 
 
   constructor(private httpClient: HttpClient) {
-    
   }
   
   private getProductsFromLocalStorage(): Product[] {
@@ -38,16 +37,14 @@ export class ProductService {
   private fetchAndStoreProductsFromAPI(): Observable<Product[]> {
     return new Observable((observer) => {
       this.httpClient.get<Product[]>(this.baseUrl).subscribe({
-        next: (products) => {
-          console.log("PRODUCTO", products);
-          
+        next: (products) => {          
           this.saveProductsToLocalStorage(products);
           observer.next(products);
           observer.complete();
         },
         error: (error) => {
           console.error('Error fetching products from API', error);
-          observer.next([]); // Retornar un array vacío en caso de error
+          observer.next([]);
           observer.complete();
         },
       });
@@ -63,7 +60,6 @@ export class ProductService {
         observer.complete();
       });
     } else {
-      
       return this.fetchAndStoreProductsFromAPI();
     }
   }
