@@ -1,13 +1,13 @@
-# Consumo de API de terceros - Ejercicio Login
+# Consumo de API de terceros - API de productos
 
 ## Raúl Emiliano Pérez López
 
 ## Consumo de API de Terceros y Login
 
-En este proyecto, vamos a crear una aplicación simple de login en Angular. El objetivo es verificar si las credenciales de usuario (email y password) proporcionadas por el usuario existen en un array de usuarios que obtendremos desde una API externa. Usaremos la API de **EscuelaJS** para obtener los datos de los usuarios.
+En este proyecto, vamos a crear una aplicación simple de login en Angular junto con el consumo de una REST API de productos. El objetivo es verificar si las credenciales de usuario (email y password) proporcionadas por el usuario existen en un array de usuarios que obtendremos desde una API externa. Usaremos la API de **EscuelaJS** para obtener los datos de los usuarios. La API de productos se encuentra en [este enlace](https://fakestoreapi.com/products).
 
 #### Características principales:
-- **Consumo de API REST:** Se realiza una solicitud HTTP GET al endpoint de usuarios para obtener los datos.
+- **Consumo de API REST:** Se realiza una solicitud HTTP GET al endpoint de usuarios para obtener los datos. Además usaremos una API de productos para mostrarlos en una tabla.
 - **Angular Material:** Se utiliza Angular Material para la construcción de una tabla estilizada y funcional.
 - **Modularidad:** Código estructurado siguiendo las mejores prácticas de Angular, con componentes reutilizables y servicios centralizados para el consumo de la API.
 
