@@ -100,9 +100,17 @@ Para ello se define la lógica de login accediendo a la API de terceros de la es
 
 ### Paso 10: Crear el HTML del dashboard
 
-Este será el componente que verá después de un login exitoso, solo contiene un título de bienvenida
+Este será el componente que verá después de un login exitoso, este contiene el consumo de una API de productos. Se muestran en una tabla usando Angular Material.
 
-![paso10](imagenes/10.jpg)
+TS
+
+![paso10_ts1](imagenes/dashboard_ts1.jpg)
+![paso10_ts1](imagenes/dashboard_ts2.jpg)
+
+HTML
+
+![paso10_html](imagenes/dashboard_html.jpg)
+
 
 ### Pruebas
 
