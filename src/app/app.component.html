@@ -181,31 +181,36 @@
 <main class="main">
   <router-outlet></router-outlet>
   <div class="content" *ngIf="isIndex">
-    <div class="left-side">
-      <h1 style="text-align: center;">{{ title }}</h1>
-      <mat-card>
-        <mat-card-content>
-            <form #loginForm="ngForm" (submit)="login()">
-                <h3 class="card-title">Acceso</h3>
-                <mat-error *ngIf="error">
-                    El email o contraseña no son correctos!
-                </mat-error>
-                <mat-form-field>
-                    <mat-label>Email</mat-label>
-                    <input matInput placeholder="Email" [(ngModel)]="email" name="email" required>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Contraseña</mat-label>
-                    <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password" 
-                    name="password" required>
-                </mat-form-field>
-                <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid" 
-                  (click)="login()">Login</button>
+    <div class="login-container">
+      <div class="left-side">
+        <h1>{{ title }}</h1>
+        <mat-card class="glass-card">
+          <mat-card-content>
+            <form #loginForm="ngForm" (ngSubmit)="login()">
+              <h3 class="card-title" style="color: #000">Acceso</h3>
+              <mat-error *ngIf="error">
+                El email o contraseña no son correctos!
+              </mat-error>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Email" [(ngModel)]="email" name="email" required>
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+              <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">
+                Login
+              </button>
             </form>
           </mat-card-content>
         </mat-card>
       </div>
     </div>
+  </div>
+  
 </main>
 
 
