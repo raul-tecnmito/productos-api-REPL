@@ -4,7 +4,7 @@
 
 ## Consumo de API de Terceros y Login
 
-En este proyecto, vamos a crear una aplicación simple de login en Angular junto con el consumo de una REST API de productos. El objetivo es verificar si las credenciales de usuario (email y password) proporcionadas por el usuario existen en un array de usuarios que obtendremos desde una API externa. Usaremos la API de **EscuelaJS** para obtener los datos de los usuarios. La API de productos se encuentra en [este enlace](https://fakestoreapi.com/products).
+En este proyecto, vamos a crear una aplicación simple de login en Angular junto con el consumo de una REST API de productos. Para el login se verficaia si las credenciales de usuario (email y password) proporcionadas por el usuario existen en un array de usuarios que obtendremos desde una API externa. Luego de iniciar sesión se muestra una tabla paginada, con filtros cuya información se obtiene de una API de productos se encuentra en [este enlace](https://fakestoreapi.com/products).
 
 #### Características principales:
 - **Consumo de API REST:** Se realiza una solicitud HTTP GET al endpoint de usuarios para obtener los datos. Además usaremos una API de productos para mostrarlos en una tabla.
@@ -23,7 +23,6 @@ En este proyecto, vamos a crear una aplicación simple de login en Angular junto
 Para iniciar el proyecto, se utiliza Angular CLI, una herramienta que facilita la creación y configuración inicial de aplicaciones Angular. Sigue los pasos a continuación para crear el proyecto:
 
 #### Comando para crear el proyecto
-Se ejecuta el siguiente comando en tu terminal para generar una nueva aplicación Angular
 
 ![paso1](imagenes/1.jpg)
 
@@ -70,9 +69,10 @@ Este será el componente al que el usuario accederá si el login fue existoso
 
 ![paso3](imagenes/3.jpg)
 
-### Paso 4: Generar el servicio de usuarios
+### Paso 4: Generar el servicio de usuarios y de productos
 
 ![paso4](imagenes/4.jpg)
+![paso4_2](imagenes/4_2.jpg)
 
 ### Paso 5: Proporcionar el el cliente HTTP a la aplicación
 
@@ -90,7 +90,7 @@ Para ello se define la lógica de login accediendo a la API de terceros de la es
 
 ![paso7](imagenes/7.jpg)
 
-### Paso 8: Crear NTML para el formulario de login
+### Paso 8: Crear la página de login
 
 ![paso8](imagenes/8.jpg)
 
@@ -98,19 +98,59 @@ Para ello se define la lógica de login accediendo a la API de terceros de la es
 
 ![paso9](imagenes/9.jpg)
 
-### Paso 10: Crear el HTML del dashboard
+### Paso 10: Crear el dashboard
 
 Este será el componente que verá después de un login exitoso, este contiene el consumo de una API de productos. Se muestran en una tabla usando Angular Material.
 
-TS
+Código de typescript
 
 ![paso10_ts1](imagenes/dashboard_ts1.jpg)
 ![paso10_ts1](imagenes/dashboard_ts2.jpg)
 
-HTML
+Código de HTML
 
 ![paso10_html](imagenes/dashboard_html.jpg)
 
+Código de CSS
+
+![paso10_css](imagenes/dashboard_css.jpg)
+
+### Paso 11: Crear el formulario para editar productos
+
+Código de Typescript
+
+![paso11_ts](imagenes/product-form1.jpg)
+
+Código de HTML
+
+![paso11_html](imagenes/product-form_html1.jpg)
+![paso11_html](imagenes/product-form_html2.jpg)
+
+Código CSS
+
+![paso11_html](imagenes/product-form1_css.jpg)
+
+### Paso 12: Crear el formulario de ver producto
+
+Código de Typescript
+
+![paso12_html](imagenes/ver-producto-ts.jpg)
+
+Código de HTML
+
+![paso12_html](imagenes/ver-producto-html.jpg)
+
+Código CSS
+
+![paso12_html](imagenes/ver-producto-css.jpg)
+
+### Paso 13: Configurar el servicio de productos
+
+![paso13_1](imagenes/productos1.jpg)
+
+![paso13_1](imagenes/productos2.jpg)
+
+![paso13_1](imagenes/productos3.jpg)
 
 ### Pruebas
 
@@ -124,6 +164,3 @@ Se muestra mensaje de error
 
 ### Login correcto
 
-Se redirecciona a /dashboard
-
-![p1](imagenes/p2.jpg)
