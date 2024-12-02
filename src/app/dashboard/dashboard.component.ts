@@ -17,6 +17,7 @@ import { ProductViewComponent } from './product-view/product-view.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
+import { BorrarConfirmacion } from '../borrar-confirmacion/borrar-confirmacion.component';
 
 
 @Component({
@@ -100,6 +101,20 @@ export class DashboardComponent implements OnInit {
     this.dialog.open(ProductViewComponent, {
       width: '500px',
       data: product,
+    });
+  }
+
+  openBorrar(id: number): void {
+    const dialogRef = this.dialog.open(BorrarConfirmacion, {
+      data: id
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.deleteProduct(id);
+      } else {
+        console.log('Usuario hizo clic en No');
+      }
     });
   }
 
