@@ -27,7 +27,13 @@ export class AppComponent {
     try {
       const success = await firstValueFrom(this.authService.login(this.email, this.password));
       if (!success) this.error = true;
-      else this.router.navigate(['/dashboard']);
+      else {
+        this.router.navigate(['/dashboard']); 
+        this.email = '';
+        this.password = '';
+        this.error = false;
+      };
+      
     } catch (err) {
       this.error = true;
     }
