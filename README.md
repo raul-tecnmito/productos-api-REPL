@@ -162,5 +162,22 @@ Se muestra mensaje de error
 
 ![p1](imagenes/p1.jpg)
 
-### Login correcto
+### Login correcto - Dashboard de productos
 
+![p2](imagenes/p2.jpg)
+
+### Modal de editar producto
+
+![p2](imagenes/p3.jpg)
+
+### Modal de ver producto
+
+![p2](imagenes/p4.jpg)
+
+### Modal de borrar producto
+
+![p2](imagenes/p5.jpg)
+
+### Modal de buscar producto
+
+![p2](imagenes/p6.jpg)
